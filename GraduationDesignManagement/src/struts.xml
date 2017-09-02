@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<package name="default" extends="struts-default">
+		<action name="addTeacherForm" class="userBean" >
+			<result>/WEB-INF/content/addTeacherForm.jsp</result>
+		</action>
+		<action name="addStudentForm" class="userBean">
+			<result>/WEB-INF/content/addStudentForm.jsp</result>
+		</action>
+		<action name="reviewModifyPassForm" class="userBean">
+			<result>/WEB-INF/content/reviewModifyPassForm.jsp</result>
+		</action>
+		<action name="studentModifyPassForm" class="userBean">
+			<result>/WEB-INF/content/studentModifyPassForm.jsp</result>
+		</action>
+		<action name="teacherModifyPassForm" class="userBean">
+			<result>/WEB-INF/content/teacherModifyPassForm.jsp</result>
+		</action>
+		<action name="teacherAddTitileForm" class="userBean">
+			<result>/WEB-INF/content/teacherAddTitileForm.jsp</result>
+		</action>
+		<action name="login" class="userBean" method="login">
+			<result name="1">/WEB-INF/content/mainManage.jsp</result>
+			<result name="4">/WEB-INF/content/mainReviewer.jsp</result>
+			<result name="5">/WEB-INF/content/mainTeacher.jsp</result>
+			<result name="3">/WEB-INF/content/mainStudent.jsp</result>
+			<result name="input">/WEB-INF/content/loginForm.jsp</result>
+		</action>
+			<action name="logout" class="userBean" method="logout">
+			
+			<result>/WEB-INF/content/loginForm.jsp</result>
+		</action>
+
+		<action name="addStudent" class="userBean" method="addStudent">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+		<action name="addTeacher" class="userBean" method="addTeacher">
+		<result name="input">/WEB-INF/content/loginForm.jsp</result>
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+		<action name="deleteTeacher" class="userBean" method="deleteTeacher">
+			<result>/WEB-INF/content/mainManage.jsp</result>
+		</action>
+		<action name="deleteStudent" class="userBean" method="deleteStudent">
+			<result>/WEB-INF/content/mainManage.jsp</result>
+		</action>
+
+		<action name="updatePasswordForm" class="userBean" method="updatePassword">
+			<result>/WEB-INF/content/updatePasswordForm.jsp</result>
+		</action>
+
+		<action name="updatePassword" class="userBean" method="agreePassword">
+			<result>/WEB-INF/content/updatePasswordForm.jsp</result>
+		</action>
+		<action name="reviewerForm" class="userBean" method="reviewerForm">
+			<result>/WEB-INF/content/reviewerForm.jsp</result>
+		</action>
+		<action name="agreeAddReviewer" class="userBean" method="agreeAddReviewer">
+			<result>/WEB-INF/content/reviewerForm.jsp</result>
+		</action>
+
+		<action name="scanReviewerMess" class="reviewerMessageBean"
+			method="scanReviewerMess">
+			<result>/WEB-INF/content/reviewerScanMess.jsp</result>
+		</action>
+
+
+		<action name="modifyPass" class="reviewerModifyPassBean">
+			<result>/WEB-INF/content/success.jsp</result>
+			<result name="input">/WEB-INF/content/updatePasswordForm.jsp</result>
+		</action>
+
+		<action name="reviewerAgreeTitileForm" class="reviewerAgreeReviewBean">
+			<result>/WEB-INF/content/reviewerAgreeTitileForm.jsp</result>
+
+		</action>
+		<action name="reviewerAgree" class="reviewerAgreeReviewBean"
+			method="reviewerAgree">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+
+		<action name="addTitile" class="teacherAddTitleBean">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+		<action name="modifyTeacherPass" class="teacherModifyPasBean">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+
+
+		<action name="teacherScanReviewerMess" class="teacherScanMessBean">
+			<result>/WEB-INF/content/teacherScanReviewerMess.jsp</result>
+		</action>
+		<action name="studentScanReviewerMess" class="studentScanMessBean">
+			<result>/WEB-INF/content/studentScanReviewerMess.jsp</result>
+		</action>
+		<action name="modifystudentPass" class="studentModifyPassBean">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+		<action name="studentSeclectTitileForm" class="studentSelectTitleBean">
+			<result>/WEB-INF/content/studentSeclectTitileForm.jsp</result>
+		</action>
+		<action name="seclectTitle1" class="studentSelectTitleBean" method="selectTitle">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+		  
+         <action name="studentScanTitle" class="studentScanTitle">
+         <result>/WEB-INF/content/studentScanTitle.jsp</result> 
+         </action>
+        <action name="fileUpload"  class="studentSelectTitleBean" >  
+            <result>/WEB-INF/content/upload.jsp</result>  
+        </action>   
+        <action name="uploadfile" class="studentSelectTitleBean">
+			<result>/WEB-INF/content/success.jsp</result>
+		</action>
+		<action name="*">
+			<result>/WEB-INF/content/loginForm.jsp</result>
+		</action>
+	</package>
+
+</struts>    

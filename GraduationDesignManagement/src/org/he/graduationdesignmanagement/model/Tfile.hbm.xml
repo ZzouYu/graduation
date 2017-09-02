@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="org.he.graduationdesignmanagement.model.Tfile" table="file" >
+    <id name="fileId" type="java.lang.String">
+            <column name="file_Id" />
+           <generator class="identity"></generator>
+        </id>
+    <property name="fileContent"  type="org.springframework.orm.hibernate3.support.BlobByteArrayType">
+            <column name="file_content"/>
+        </property> 
+         <property name="filename" type="java.lang.String">
+            <column name="file_name" length="8" not-null="false" />
+        </property>
+        <property name="remark" type="java.lang.String">
+            <column name="file_remark" length="8" not-null="false" />
+        </property>
+  </class>
+  </hibernate-mapping>

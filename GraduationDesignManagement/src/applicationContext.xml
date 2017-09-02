@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframerk.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/graduation_design" >
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>
+					org/he/graduationdesignmanagement/model/Login.hbm.xml
+				</value>
+				<value>
+					org/he/graduationdesignmanagement/model/Student.hbm.xml
+				</value>
+				<value>
+					org/he/graduationdesignmanagement/model/Teacher.hbm.xml
+				</value>
+				<value>
+					org/he/graduationdesignmanagement/model/Title.hbm.xml
+				</value>
+				<value>
+					org/he/graduationdesignmanagement/model/Selecttitle.hbm.xml
+				</value></list>
+		</property>
+	</bean>
+
+	<bean id="userDao" class="org.he.graduationdesignmanagement.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="manageDao"
+		class="org.he.graduationdesignmanagement.dao.impl.ManagerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userService"
+		class="org.he.graduationdesignmanagement.service.Impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="managerTitleService"
+		class="org.he.graduationdesignmanagement.service.Impl.ManageTitleServiceImpl">
+		<property name="manageDao" ref="manageDao"></property>
+	</bean>
+	<bean id="userBean" class="org.he.graduationdesignmanagement.action.UserAction">
+		<property name="userService" ref="userService"></property>
+		<property name="managerTitleService" ref="managerTitleService"></property>
+	</bean>
+
+<bean id="reviewerDao"
+		class="org.he.graduationdesignmanagement.dao.impl.ReviewerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="reviewerService"
+		class="org.he.graduationdesignmanagement.service.Impl.ReviewerServiceImpl">
+		<property name="reviewerDao" ref="reviewerDao"></property>
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="reviewerMessageBean"
+		class="org.he.graduationdesignmanagement.action.ReviewerMessage">
+		<property name="reviewerService" ref="reviewerService"></property>
+	</bean>
+	
+	<bean id="reviewerModifyPassBean"
+		class="org.he.graduationdesignmanagement.action.ReviewerModifyPassAction">
+		<property name="reviewerService" ref="reviewerService"></property>
+	</bean>
+	
+	<bean id="reviewerAgreeReviewBean"
+		class="org.he.graduationdesignmanagement.action.ReviewerAgreeTitleForm">
+		<property name="reviewerService" ref="reviewerService"></property>
+	</bean>
+	
+	<bean id="teacherDao" class="org.he.graduationdesignmanagement.dao.impl.TeacherDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="teacherService"
+		class="org.he.graduationdesignmanagement.service.Impl.TeacherServiceImpl">
+		<property name="teacherDao" ref="teacherDao"></property>
+	</bean>
+	<bean id="teacherAddTitleBean"
+		class="org.he.graduationdesignmanagement.action.TeacherAddTitle">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	
+	<bean id="teacherModifyPasBean"
+		class="org.he.graduationdesignmanagement.action.TeacherModifyPass">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	
+		<bean id="teacherScanMessBean"
+		class="org.he.graduationdesignmanagement.action.TeacherScanMessage">
+		<property name="teacherService" ref="teacherService"></property>
+	</bean>
+	
+	
+	<bean id="studetDao" class="org.he.graduationdesignmanagement.dao.impl.StudentDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+			<bean id="studentService"
+		class="org.he.graduationdesignmanagement.service.Impl.StudentServiceImpl">
+		<property name="studetDao" ref="studetDao"></property>
+	</bean>
+		
+	<bean id="studentScanMessBean"
+		class="org.he.graduationdesignmanagement.action.StudentScanMessage">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="studentScanTitle"
+		class="org.he.graduationdesignmanagement.action.studentScanTitle">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="studentModifyPassBean"
+		class="org.he.graduationdesignmanagement.action.StudentModifyPass">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+	<bean id="studentSelectTitleBean"
+		class="org.he.graduationdesignmanagement.action.StudentSelectTitleAction">
+		<property name="studentService" ref="studentService"></property>
+	</bean>
+
+	
+</beans>

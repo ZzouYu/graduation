@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+
+#left tr{
+background-color:#888888;
+}
+#left a{
+color:#fff;
+}
+#left tr:hover{
+background-color:#00DD00;
+}
+
+#right th {
+color:#fff;
+background:#FF3333;
+
+}
+#right p{
+	width:200px;
+	height:30px;
+	color:#FF3333;
+	margin-bottom:10px;
+	font-size:20px;
+	line-hight:30px
+}
+
+.inp{
+ background-color:#00AA00;
+ color:#fff;
+ width:80px;
+ height:30px;
+ font-saze:20px;
+}

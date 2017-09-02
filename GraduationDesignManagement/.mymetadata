@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="GraduationDesignManagement"
+  id="myeclipse.1370828817710"
+  context-root="/GraduationDesignManagement"
+  j2ee-spec="5.0"
+  archive="GraduationDesignManagement.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
